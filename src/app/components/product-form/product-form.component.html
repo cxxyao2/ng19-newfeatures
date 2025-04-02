@@ -1,0 +1,39 @@
+<div class="contianer">
+
+    <div class="d-flex justify-content-center">
+        <form #productForm="ngForm" (ngSubmit)="onSubmit()">
+            <h1> The order from customer:: &nbsp; {{initCustomer()}}</h1>
+            <div class="mb-3">
+                <label for="name" class="form-label">Product Name</label>
+                <input type="text" [ngModelOptions]="{standalone: true}" class="form-control" id="name"
+                    placeholder="Product Name" [(ngModel)]="product.name" #name="ngModel" required
+                    [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched)}" />
+
+                <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                    Name is required
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="color" class="form-label">Color</label>
+                <input class="form-control" [ngModelOptions]="{standalone: true}" id="color" name="color" type="text"
+                    [(ngModel)]="product.favoriteColor" #color="ngModel" />
+                <div [hidden]="color.valid || color.pristine" class="alert alert-danger">
+                    Color is required
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="price" placeholder="Price" [ngModel]="product.price"
+                    (ngModelChange)="onPriceChange($event)" pattern="{{priceRegex}}" required maxlength="11"
+                    #price="ngModel" [ngModelOptions]="{standalone: true}"
+                    [ngClass]="{'is-invalid': price.invalid && (price.dirty || price.touched)}" />
+            </div>
+            <div *ngIf="price.errors?.['pattern']" class="alert alert-danger">
+                Price must be a number with at most 11 digits and 2 decimal places.
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="productForm.reset()">Submit</button>
+        </form>
+
+    </div>
+
+</div>

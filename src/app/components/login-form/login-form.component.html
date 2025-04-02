@@ -1,0 +1,36 @@
+<div class="container-fluid ">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <div class="d-flex  justify-content-center align-items-center border border-primary">
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
+                    formControlName="email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="pasword"
+                    formControlName="password">
+            </div>
+            <div class="mb-3">
+                <label for="profile" class="form-label">Profile</label>
+                <textarea class="form-control" id="profile" name="profile" rows="3" placeholder="this is a good man"
+                    formControlName="profile"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="price" name="price" placeholder="11"
+                    formControlName="price" />
+
+            </div>
+            <div *ngIf="priceControl.errors?.['pattern']" class="alert alert-danger">
+                Price must be a number with at most 11 digits and 2 decimal places.
+            </div>
+            <div> hello world
+                <img src="assets/11.png" alt="Logo" class="logo" />
+            </div>
+
+        </div>
+    </form>
+</div>
