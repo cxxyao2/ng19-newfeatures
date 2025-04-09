@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Todo {
@@ -18,6 +18,20 @@ export class TodoService {
   constructor(private http: HttpClient) { }
 
   getTodos(): Observable<any> {
+    const page = 5;
+    const size = 10;
+    const query = 1;
+
+    /* new way to create params
+    const params = new HttpParams({
+      fromObject: {
+        query, page, size
+      }
+    });
+
+     return this.http.get(this.apiUrl, { params });
+*/
+
     return this.http.get(this.apiUrl);
   }
 
@@ -25,7 +39,7 @@ export class TodoService {
     return this.http.post(this.apiUrl, TodoData);
   }
 
-  updateTodo(id: number, TodoData: { title: string;  userId: number }): Observable<any> {
+  updateTodo(id: number, TodoData: { title: string; userId: number }): Observable<any> {
     return this.http.put(`${this.apiUrl}/${id}`, TodoData);
   }
 
