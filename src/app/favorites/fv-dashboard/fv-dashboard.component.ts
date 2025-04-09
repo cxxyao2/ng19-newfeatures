@@ -39,4 +39,16 @@ export const favorites: Favorite[] = generteFavorites(10);
 export class FvDashboardComponent {
   favorites = signal<Favorite[]>(favorites);
 
+  updateFavoriteList(id: number) {
+    this.favorites.update((items) => {
+      return items.map((item) => {
+        if (item.id === id) {
+          return { ...item, isFavorite: !item.isFavorite };
+        }
+        return item;
+      }
+      );
+    });
+  }
+
 }

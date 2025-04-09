@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
 import { Favorite } from '../fv-dashboard/fv-dashboard.component';
 import { FvItemComponent } from '../fv-item/fv-item.component';
 
@@ -6,21 +6,19 @@ import { FvItemComponent } from '../fv-item/fv-item.component';
   selector: 'app-fv-list',
   imports: [FvItemComponent],
   templateUrl: './fv-list.component.html',
-  styleUrl: './fv-list.component.css'
+  styleUrl: './fv-list.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FvListComponent {
   items = input.required<Array<Favorite>>();
 
-  favoriteList = signal<number[]>([]);
+  updateFavorites = output<number>();
 
-  updateFavoriteList(id:number){
-    const isRemoved = this.favoriteList().includes(id);
-
-    if (isRemoved) {
-      this.favoriteList.update((prev) => prev.filter((item) => item !== id));
-    } else {
-      this.favoriteList.update((prev) => [...prev, id]);
+  favoriteList = computed(() => this.items().reduce((acc, item) => {
+    if (item.isFavorite) {
+      return acc.concat(item.id);
     }
-  }
+    return acc;
+  }, [] as number[]));  // [2,3]
 
 }

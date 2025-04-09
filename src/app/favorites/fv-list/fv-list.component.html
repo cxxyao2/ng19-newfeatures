@@ -2,7 +2,6 @@
     Favorite List: {{ favoriteList().join(', ') }}
 </div>
 @for(item of items(); track item.id) {
-<app-fv-item [item]="item" (updateFavorites)="updateFavoriteList($event)"
-    [favoriteList]="favoriteList()"></app-fv-item>
+<app-fv-item [item]="item" (updateFavorites)="updateFavorites.emit($event)"></app-fv-item>
 
 }
