@@ -4,6 +4,8 @@ import { ParentChildComponent } from './components/parent-child/parent-child.com
 import { CounterCallerComponent } from './counter/counter-caller/counter-caller.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { PushMeComponent } from './components/push-me/push-me.component';
+import { ResourceDemoComponent } from './components/resource-demo/resource-demo.component';
+import { RxResourceDemoComponent } from './components/rx-resource-demo/rx-resource-demo.component';
 
 export const routes: Routes = [
     {
@@ -11,7 +13,7 @@ export const routes: Routes = [
         loadComponent: () => import('./components/login-form/login-form.component').then(m => m.LoginFormComponent),
     },
     {
-        path:'fv',
+        path: 'fv',
         loadComponent: () => import('./favorites/fv-dashboard/fv-dashboard.component').then(m => m.FvDashboardComponent),
     },
     {
@@ -25,6 +27,14 @@ export const routes: Routes = [
     {
         path: 'products/:id',
         component: ParentChildComponent,
+    },
+    {
+        path: 'resource-demo',
+        component: ResourceDemoComponent
+    },
+    {
+        path: 'rx-resource',
+        component: RxResourceDemoComponent
     },
     {
         path: 'counter',

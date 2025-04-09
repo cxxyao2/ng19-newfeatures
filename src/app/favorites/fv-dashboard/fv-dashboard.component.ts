@@ -35,6 +35,7 @@ export const favorites: Favorite[] = generteFavorites(10);
   templateUrl: './fv-dashboard.component.html',
   styleUrl: './fv-dashboard.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class FvDashboardComponent {
   favorites = signal<Favorite[]>(favorites);
