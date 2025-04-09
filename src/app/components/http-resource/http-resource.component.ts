@@ -34,6 +34,13 @@ export class HttpResourceComponent {
     // use a default value and parse with zod
   }), { defaultValue: [], parse: todoListSchema.parse });
 
+
+  // searchResult = httpResource(
+  //   ()=> `search-api/${query}`,
+  //   {defaultValue:[]}
+  // );
+
+
   todos = computed(() => this.todosResource.value());
   loading = computed(() => this.todosResource.isLoading());
   error = computed(() => this.todosResource.error());
