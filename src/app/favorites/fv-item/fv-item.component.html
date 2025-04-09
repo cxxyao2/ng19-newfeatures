@@ -1,0 +1,11 @@
+<div class="favorite" [style.backgroundColor]="favoriteBgColor()">
+    @let f = favorite();
+    <h3>Favorite Item: {{f.id}}</h3>
+    <p>Content: {{f.content}}</p>
+    <div>
+        @let buttonText = isFavorite() ? 'Unfavorite' : 'Favorite';
+        <button (click)="updateFavorites.emit(f.id)">{{ buttonText }}</button>
+    </div>
+</div>
+
+{{printItem()}}

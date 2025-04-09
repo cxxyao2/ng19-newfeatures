@@ -21,3 +21,6 @@
 
 - httpResource
 - compute or linkedSignal
+
+## reduce re-rendering
+- components under favorites folder

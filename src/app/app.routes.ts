@@ -11,6 +11,10 @@ export const routes: Routes = [
         loadComponent: () => import('./components/login-form/login-form.component').then(m => m.LoginFormComponent),
     },
     {
+        path:'fv',
+        loadComponent: () => import('./favorites/fv-dashboard/fv-dashboard.component').then(m => m.FvDashboardComponent),
+    },
+    {
         path: 'cart',
         loadComponent: () => import('./shopping-cart/cart/cart.component').then(m => m.CartComponent),
     },
