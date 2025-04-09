@@ -1,13 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input, Input } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Product } from '@app/models/product.interface';
 
-export interface Product {
-  name: string;
-  age: number;
-  favoriteColor: string;
-  price: number;
-}
 
 @Component({
   selector: 'app-product-form',
@@ -28,6 +23,14 @@ export class ProductFormComponent {
 
   priceRegex = '^\\d{0,8}(\\.\\d{0,2})?$'; // Regular expression pattern for price (only numbers)
 
+
+  product: Product = {
+    name: 'Superman',
+    age: 30,
+    favoriteColor: 'blue',
+    price: 12
+  }
+
   onPriceChange(value: string) {
     const inputValue = value;
     const regex = new RegExp(this.priceRegex);
@@ -38,12 +41,6 @@ export class ProductFormComponent {
     // console.log(inputValue);
   }
 
-  product: Product = {
-    name: 'Superman',
-    age: 30,
-    favoriteColor: 'blue',
-    price: 12
-  }
 
   onSubmit() {
     // Process product form submission

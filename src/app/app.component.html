@@ -1,3 +1,28 @@
-<app-login-form></app-login-form>
-<!-- <app-product-form [initProduct]="initProduct" [initCustomer]="1"></app-product-form> -->
-<router-outlet />
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">My App</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/cart" routerLinkActive="active">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/products" routerLinkActive="active">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['products',productId]" routerLinkActive="active">Product 1</a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

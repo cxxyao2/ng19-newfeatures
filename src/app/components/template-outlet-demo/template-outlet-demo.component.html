@@ -1,0 +1,25 @@
+<ng-template #actions>
+    <button mat-button>Save</button>
+    <button mat-button>Delete</button>
+    <button mat-button>Cancel</button>
+</ng-template>
+
+<dialog #myDialog>
+    <h2 mat-dialog-title>Dialog Title</h2>
+    <div class="dialog footer">
+        <ng-container *ngTemplateOutlet="actions"></ng-container>
+        <button (click)="closeDialog()">Close dialog</button>
+    </div>
+</dialog>
+
+@for(item of items; track item.id){
+<div>
+    <h3>{{ item.name }}</h3>
+    <ng-container *ngTemplateOutlet="actions"></ng-container>
+</div>
+}
+
+<div>
+    <button (click)="showDialog()">Open dialog</button>
+    <button (click)="closeDialog()">Close dialog</button>
+</div>

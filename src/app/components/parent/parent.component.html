@@ -1,0 +1,11 @@
+<div class="container bg-blend-color">
+    <div class="d-flex">
+        <input type="text" class="form-control" [(ngModel)]="myModel.name" placeholder="John Doe" aria-label="name">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn" (click)="goToItems()">goto item</button>
+    </div>
+    <div>
+        <app-parent-child [initProduct]="myModel" [productVendor]="'New York City'"></app-parent-child>
+    </div>
+
+</div>

@@ -1,0 +1,11 @@
+<div>
+    <label for="query">Search:</label>
+    <input [(ngModel)]="query" name="query" id="query" type="number" />
+    @for(todo of todos(); track todo.id) {
+        <span>
+            {{ todo.title }} - {{ todo.completed ? 'Completed' : 'Not Completed' }}
+            <button (click)="deleteTodo(todo.id)">Delete</button>
+        </span>
+    }
+
+</div>
